@@ -1,11 +1,31 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import React, { useEffect } from 'react';
+import { useStore } from '../store/useStore';
+import { products } from '../data/products';
+import Header from '../components/Header';
+import Sidebar from '../components/Sidebar';
+import ProductGrid from '../components/ProductGrid';
+import Cart from '../components/Cart';
 
 const Index = () => {
+  const { setProducts } = useStore();
+
+  useEffect(() => {
+    console.log('Index component mounted, loading products');
+    setProducts(products);
+  }, [setProducts]);
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <div className="min-h-screen bg-background">
+      <Header />
+      <Cart />
+      
+      <div className="container mx-auto px-4 py-8">
+        <div className="flex flex-col lg:flex-row gap-8">
+          <div className="lg:sticky lg:top-24 lg:self-start">
+            <Sidebar />
+          </div>
+          <ProductGrid />
+        </div>
       </div>
     </div>
   );
