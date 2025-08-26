@@ -1,5 +1,6 @@
 import React from 'react';
 import { Search, ShoppingCart, Menu, Home } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 import { useStore } from '../store/useStore';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
@@ -12,18 +13,42 @@ const Header = () => {
     toggleCart, 
     cartItemsCount 
   } = useStore();
+  
+  const location = useLocation();
 
   console.log('Header rendered, cart items count:', cartItemsCount());
+
+  const navItems = [
+    { name: 'Inicio', path: '/' },
+    { name: 'Sobre Nosotros', path: '/about' }
+  ];
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
+          <Link to="/" className="flex items-center space-x-2">
             <Home className="h-8 w-8 text-primary" />
             <h1 className="text-2xl font-bold text-primary">CasaShop</h1>
-          </div>
+          </Link>
+
+          {/* Navigation - Desktop */}
+          <nav className="hidden md:flex items-center space-x-8">
+            {navItems.map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                className={`text-sm font-medium transition-colors hover:text-primary ${
+                  location.pathname === item.path 
+                    ? 'text-primary' 
+                    : 'text-muted-foreground'
+                }`}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </nav>
 
           {/* Search Bar */}
           <div className="hidden md:flex flex-1 max-w-md mx-8">
