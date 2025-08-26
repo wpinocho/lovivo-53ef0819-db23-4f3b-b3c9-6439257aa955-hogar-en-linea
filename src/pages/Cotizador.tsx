@@ -139,25 +139,66 @@ const Cotizador = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary/5 to-secondary/10 py-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto">
-            <Badge variant="secondary" className="mb-4">
+      <section className="relative bg-gradient-to-br from-primary/5 to-secondary/10 py-20 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1920&h=800&fit=crop&q=80"
+            alt="Taller de carpintería profesional"
+            className="w-full h-full object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/30"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative">
+          <div className="text-center max-w-4xl mx-auto">
+            <Badge variant="secondary" className="mb-6">
               <Calculator className="h-4 w-4 mr-2" />
               Cotizador Profesional
             </Badge>
             
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
               Cotiza tus Muebles
               <span className="text-primary block">a Medida</span>
             </h1>
             
-            <p className="text-xl text-muted-foreground mb-8">
+            <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
               Obtén una cotización personalizada para tus muebles. Especifica dimensiones, 
               materiales y acabados para recibir un presupuesto detallado al instante.
             </p>
+
+            {/* Features Grid */}
+            <div className="grid md:grid-cols-3 gap-6 mt-12">
+              <Card className="bg-background/80 backdrop-blur border-0 shadow-lg">
+                <CardContent className="p-6 text-center">
+                  <Ruler className="h-12 w-12 mx-auto mb-4 text-primary" />
+                  <h3 className="font-semibold text-lg mb-2">Medidas Exactas</h3>
+                  <p className="text-muted-foreground">Especifica las dimensiones precisas para tu mueble</p>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-background/80 backdrop-blur border-0 shadow-lg">
+                <CardContent className="p-6 text-center">
+                  <Palette className="h-12 w-12 mx-auto mb-4 text-primary" />
+                  <h3 className="font-semibold text-lg mb-2">Materiales Premium</h3>
+                  <p className="text-muted-foreground">Elige entre una amplia gama de materiales de calidad</p>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-background/80 backdrop-blur border-0 shadow-lg">
+                <CardContent className="p-6 text-center">
+                  <DollarSign className="h-12 w-12 mx-auto mb-4 text-primary" />
+                  <h3 className="font-semibold text-lg mb-2">Precio Instantáneo</h3>
+                  <p className="text-muted-foreground">Recibe tu cotización al momento sin esperas</p>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
+
+        {/* Floating Elements */}
+        <div className="absolute top-20 left-10 w-20 h-20 bg-primary/10 rounded-full blur-xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-32 h-32 bg-secondary/20 rounded-full blur-2xl animate-pulse delay-1000"></div>
       </section>
 
       <div className="container mx-auto px-4 py-12">

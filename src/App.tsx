@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import About from "./pages/About";
 import Cotizador from "./pages/Cotizador";
 import NotFound from "./pages/NotFound";
+import Cotizador from "./pages/Cotizador";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +23,7 @@ const App = () => (
           <Route path="/about" element={<About />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
+        <Route path="/cotizador" element={<Cotizador />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
